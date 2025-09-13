@@ -19,20 +19,29 @@
 // ■ = layer being pressed
 
         base_layer {
-// --------------------------------------------------------------------------------------------------------------
-// |  ESC  |   1   |   2   |   3   |   4    |   5    |        |    6   |    7   |   8   |   9   |   0   |  BSPC |
-// |  TAB  |   Q   |   W   |   E   |   R    |   T    |        |    Y   |    U   |   I   |   O   |   P   |   -   |
-// | SHIFT |   A   |   S   |   D   |   F    |   G    |        |    H   |    J   |   K   |   L   |   ;   |  ' "  |
-// | CTRL  |   Z   |   X   |   C   |   V    |   B    |        |    N   |    M   |  , <  |  . >  |   /   |   \   |
-//                         |  CTRL |  SPACE | NAVSYM |        |  EXTRA |  ENTER |  GUI  |  
-//                                 |  HOME  |  BSPC  |        |   DEL  |   ALT  |
+// .-----------------------------------------.                                  .-----------------------------------------.
+// | Esc  |   1  |   2  |   3  |   4  |   5  |                                  |   6  |   7  |   8  |   9  |   0  |  Bsp |
+// |------+------+------+------+------+------|                                  |------+------+------+------+------+------|
+// | Tab  |   Q  |   W  |   E  |   R  |   T  |                                  |   Y  |   U  |   I  |   O  |   P  |   -  |
+// |------+------+------+------+------+------|                                  |------+------+------+------+------+------|
+// | Shft |   A  |   S  |   D  |   F  |   G  |                                  |   H  |   J  |   K  |   L  |   ;  |   '  |
+// |------+------+------+------+------+------|                                  |------+------+------+------+------+------|
+// | Ctrl |   Z  |   X  |   C  |   V  |   B  |                                  |   N  |   M  |   ,  |   .  |   /  |   \  |
+// '-----------------------------------------/                                  \-----------------------------------------'
+//                                   / LOWER /---------------.    .---------------\ RAISE \
+//                                  /       /  Caps /  Ctrl /      \  Bsp  \  Del  \       \
+//                                 '-------/  Lock /       /        \       \       \-------'
+//                                        /---------------/          \---------------\
+//                                       /  Gui  / Space /            \ Enter \  Alt  \
+//                                      /       /       /              \       \       \
+//                                     '---------------'                '---------------'
             bindings = <
 &kp ESC     &kp N1  &kp N2  &kp N3     &kp N4     &kp N5         &kp N6    &kp N7    &kp N8     &kp N9   &kp N0    &kp BSPC
 &kp TAB     &kp Q   &kp W   &kp E      &kp R      &kp T          &kp Y     &kp U     &kp I      &kp O    &kp P     &kp MINUS
 &kp LSHFT   &kp A   &kp S   &kp D      &kp F      &kp G          &kp H     &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LCTRL   &kp Z   &kp X   &kp C      &kp V      &kp B          &kp N     &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp BSLH
-                            &kp LCTRL  &kp SPACE  &mo 1          &mo 2     &kp RET   &kp RGUI
-                                       &kp HOME   &kp BSPC       &kp DEL   &kp RALT
+                            &mo 1      &kp CAPS   &kp LCTRL      &kp BSPC  &kp DEL   &mo 2
+                                       &kp LGUI   &kp SPACE      &kp RET   &kp RALT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -44,14 +53,14 @@
 // | BT_CLR |   □   |   □   |   □   |   □    |   [    |        |    ]   |    7   |   8   |   9   |   □   |   +   |
 // |BTCLRALL| HOME  |  PGUP |  PGDN |  END   |   (    |        |    )   |    4   |   5   |   6   |   -   |   |   |
 // |   □    |   □   |   □   |   □   |   □    |   □    |        |    0   |    1   |   2   |   3   |   =   |   _   |
-//                          |  CTRL |  HOME  |   ■    |        |    □   |   ALT  |  GUI  |  
+//                          |   ■   |  HOME  |   □    |        |    □   |   ALT  |   □   |  
 //                                  |  SPACE |  BSPC  |        |   CTRL |  ENTER |
             bindings = <
 &kp GRAVE       &kp EXCL  &kp AT     &kp HASH   &kp DLLR   &kp PRCNT       &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR   &kp RPAR   &kp DEL
 &bt BT_CLR      __NONE__  __NONE__   __NONE__   __NONE__   &kp LBKT        &kp RBKT   &kp KP_N7  &kp KP_N8  &kp KP_N9  __NONE__   &kp PLUS
 &bt BT_CLR_ALL  &kp EXCL  &kp PG_UP  &kp PG_DN  &kp END    &kp LPAR        &kp RPAR   &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp MINUS  &kp PIPE
 __NONE__        __NONE__  __NONE__   __NONE__   __NONE__   __NONE__        &kp KP_N0  &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp EQUAL  &kp UNDER
-                                     &kp LCTRL  &kp HOME   __NONE__        __NONE__   &kp RALT   &kp RGUI 
+                                     __NONE__   &kp HOME   __NONE__        __NONE__   &kp RALT   __NONE__ 
                                                 &kp SPACE  &kp BSPC        &kp RCTRL  &kp RET 
             >;
 
@@ -64,14 +73,14 @@ __NONE__        __NONE__  __NONE__   __NONE__   __NONE__   __NONE__        &kp K
 // |   □    |   □   |   □   |   □   |   □    |   [    |        |    ]   |    □   |   NUMLOCK  |  INS  | SCROLLLOCK |   MUTE  |
 // |   □    |   ←   |   ↑   |   ↓   |   →    |   (    |        |    )   |   PREV | PLAY/PAUSE |  NEXT |      □     |  VOLUP  |
 // |   □    |   □   |   □   |   □   |   □    |   □    |        |    □   |    □   |      □     |   □   |      □     | VOLDOWN |
-//                          |  CTRL |  HOME  |   □    |        |    ■   |   ALT  |     GUI    |  
+//                          |   □   |  HOME  |   □    |        |    □   |   ALT  |      ■    |  
 //                                  |  SPACE |  BSPC  |        |   CTRL |  ENTER |
             bindings = <
 &kp F12   &kp F1    &kp F2    &kp F3     &kp F4     &kp F5          &kp F6     &kp F7      &kp F8      &kp F9      &kp F10   &kp F11
 __NONE__  __NONE__  __NONE__  __NONE__   __NONE__   &kp LBKT        &kp RBKT   __NONE__    &kp KP_NUM  &kp INS     &kp SLCK  &kp C_MUTE
 __NONE__  &kp LEFT  &kp UP    &kp DOWN   &kp UP     &kp LPAR        &kp RPAR   &kp C_PREV  &kp C_PP    &kp C_NEXT  __NONE__  &kp C_VOL_UP
 __NONE__  __NONE__  __NONE__  __NONE__   __NONE__   __NONE__        __NONE__   __NONE__    __NONE__    __NONE__    __NONE__  &kp C_VOL_DN
-                              &kp LCTRL  &kp HOME   __NONE__        __NONE__   &kp RALT    &kp RGUI 
+                              __NONE__   &kp HOME   __NONE__        __NONE__   &kp RALT    __NONE__ 
                                          &kp SPACE  &kp BSPC        &kp RCTRL  &kp RET 
             >;
 
